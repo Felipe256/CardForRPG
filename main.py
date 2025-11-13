@@ -11,8 +11,8 @@ def web_page():
   </form>
   
   <form action="/?formWrite" method="POST">
-  <label for="name">Nome (0-20):</label>
-  <input type="text" maxlength="20" id="name" name="name"/>
+  <label for="name">Nome (0-16):</label>
+  <input type="text" maxlength="16" id="name" name="name"/>
   <br>
   <label for="origem">Origem (0-99):</label>
   <input type="number" min="0" max="99" id="origem" name="origem"/>
@@ -38,7 +38,7 @@ def web_page():
   <label for="PEmax">PE max (0-250):</label>
   <input type="number" min="0" max="250" id="PEmax" name="PEmax">
   <br>
-  <label for="COND">condicao (max 5 entre virgulas sem espaco):</label>
+  <label for="COND">condicao (max 5 entre espaco):</label>
   <input type="text" maxlength="14" id="COND" name="COND">
   <br>
   <label for="DEF">Defesa (1-50):</label>
@@ -65,7 +65,7 @@ def web_page():
   return html
 
 
-port = 89
+port = 80
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('', port))
 s.listen(5)
@@ -89,7 +89,26 @@ while True:
   if formWrite == 7:
     resposta = request.split("\\r\\n\\r\\n")
     resposta.pop(0)
-    print("RESPOSTA AKI: ", resposta[0].split("&"))
+    resposta = resposta[0].split("&")
+    paraEscrever = []
+    for elemento in resposta:
+        paraEscrever.append(elemento.split("=")[1].replace("'", ""))
+    writeCard()
+    #bloco 4 = nome(16)
+    writeCard(writingNum = 4, data = paraEscrever[0])
+    #bloco 5 = origem(2), classe(2), pv atual (3), pv max(3)
+    dataBloco5 = paraEscrever[1]+","+paraEscrever[2]+","+paraEscrever[3]+","+paraEscrever[4]
+    writeCard(writingNum = 5, data = dataBloco5)
+    #bloco 6 = san atual(3), san max(3), pe atual(3), pe max(3)
+    dataBloco6 = paraEscrever[5]+","+paraEscrever[6]+","+paraEscrever[7]+","+paraEscrever[8]
+    writeCard(writingNum = 6, data = dataBloco6)
+    #bloco 8 = condicao
+    dataBloco8 = paraEscrever[9]
+    writeCard(writingNum = 8, data = dataBloco8)
+    #bloco 9 = defesa(2), esquiva(2), bloqueio(2), carga(2), carga max(2)
+    dataBloco9 = paraEscrever[10]+","+paraEscrever[11]+","+paraEscrever[12]+","+paraEscrever[13]
+    writeCard(writingNum = 9, data = dataBloco9)
+    
     
   response = web_page()
   conn.send('HTTP/1.1 200 OK\n')
