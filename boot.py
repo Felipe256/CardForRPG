@@ -28,6 +28,22 @@ while station.isconnected() == False:
 print('Connection successful')
 print(station.ifconfig())
 
+Bnome = ""
+Borigem = 0
+Bclasse = 0
+BpvAtual = 0
+BpvMax = 0
+BsanAtual = 0
+BsanMax = 0
+BpeAtual = 0
+BpeMax = 0
+Bcondicao = "0 0 0 0 0"
+Bdefesa = 0
+Besquiva = 0
+Bbloqueio = 0
+Bcarga = 0
+BcargaMax = 0
+
 def readCard(readingNum = 4):
     import time
     from machine import Pin, SPI
@@ -77,6 +93,7 @@ def readCard(readingNum = 4):
                     if dados:
                         try:
                             print('Dados no bloco ',readingNum,':', dados.decode('utf-8').rstrip('\x00'))
+                            return(dados.decode('utf-8').rstrip('\x00'))
                             break
                         except Exception as e:
                             print('Falha na decodificação!')
