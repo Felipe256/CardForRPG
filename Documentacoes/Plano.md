@@ -42,6 +42,7 @@ A estrutura é dividida em **3 fases de implementação**, permitindo entregas i
 | NOM       | Nome            | 20 chars      | `João Silva`       |
 | ORI       | Origem          | 2 dígitos     | `10`               |
 | CLA       | Classe          | 2 dígitos     | `11`               |
+| NEX       | NEX             | 2 dígitos     | `05`               |
 | PV        | Vida Atual      | 3 dígitos     | `012`              |
 | PVM       | Vida Máxima     | 3 dígitos     | `015`              |
 | SAN       | Sanidade Atual  | 3 dígitos     | `050`              |
@@ -77,35 +78,36 @@ A estrutura é dividida em **3 fases de implementação**, permitindo entregas i
 
 #### Perícias (28):
 
-| **Sigla** | **Nome**     | **Tamanho** |
-| --------- | ------------ | ----------- |
-| ACR       | Acrobacia    | 2 dígitos   |
-| ADE       | Adestramento | 2 dígitos   |
-| ART       | Artes        | 2 dígitos   |
-| ATL       | Atletismo    | 2 dígitos   |
-| COM       | Combate      | 2 dígitos   |
-| CON       | Conhecimento | 2 dígitos   |
-| CUL       | Cultura      | 2 dígitos   |
-| DIS       | Discrição    | 2 dígitos   |
-| ENG       | Engenharia   | 2 dígitos   |
-| FIG       | Fuga         | 2 dígitos   |
-| FRA       | Fraqueza     | 2 dígitos   |
-| INV       | Investigação | 2 dígitos   |
-| OCU       | Ocultismo    | 2 dígitos   |
-| INT       | Intuição     | 2 dígitos   |
-| JOG       | Jogo         | 2 dígitos   |
-| LAB       | Laboratório  | 2 dígitos   |
-| MED       | Medicina     | 2 dígitos   |
-| NAT       | Natureza     | 2 dígitos   |
-| NAV       | Navegação    | 2 dígitos   |
-| PER       | Percepção    | 2 dígitos   |
-| PIL       | Pilotagem    | 2 dígitos   |
-| PSI       | Psicologia   | 2 dígitos   |
-| REF       | Reflexos     | 2 dígitos   |
-| REL       | Religião     | 2 dígitos   |
-| SEG       | Segurança    | 2 dígitos   |
-| SOC       | Social       | 2 dígitos   |
-| TEC       | Tecnologia   | 2 dígitos   |
+| **Sigla** | **Nome**       | **Tamanho** |
+| --------- | -------------- | ----------- |
+| ACR       | Acrobacia      | 1 dígito    |
+| ADE       | Adestramento   | 1 dígito    |
+| ART       | Artes          | 1 dígito    |
+| ATL       | Atletismo      | 1 dígito    |
+| ATU       | Atualidades    | 1 dígito    |
+| CIE       | Ciências       | 1 dígito    |
+| CRI       | Crime          | 1 dígito    |
+| DIP       | Diplomacia     | 1 dígito    |
+| ENG       | Enganação      | 1 dígito    |
+| FOR       | Fortitude      | 1 dígito    |
+| FUR       | Furtividade    | 1 dígito    |
+| INI       | Iniciativa     | 1 dígito    |
+| ITM       | Intimidação    | 1 dígito    |
+| ITU       | Intuição       | 1 dígito    |
+| INV       | Investigação   | 1 dígito    |
+| LUT       | Luta           | 1 dígito    |
+| MED       | Medicina       | 1 dígito    |
+| OCU       | Ocultismo      | 1 dígito    |
+| PER       | Percepção      | 1 dígito    |
+| PIL       | Pilotagem      | 1 dígito    |
+| PON       | Pontaria       | 1 dígito    |
+| PRO       | Profissão      | 1 dígito    |
+| REF       | Reflexos       | 1 dígito    |
+| REL       | Religião       | 1 dígito    |
+| SOB       | Sobrevivência  | 1 dígito    |
+| TAT       | Tática         | 1 dígito    |
+| TEC       | Tecnologia     | 1 dígito    |
+| VON       | Vontade        | 1 dígito    |
 
 **Blocos usados:** 6, 8–16
 
@@ -133,10 +135,10 @@ A estrutura é dividida em **3 fases de implementação**, permitindo entregas i
 
 ## 4. Mapeamento de Blocos
 
-| **Bloco** | **Conteúdo**                                   |
-| --------- | ---------------------------------------------- |
-| 4         | NOM, ORI, CLA, PV, PVM, SAN, SNM, PE, PEM, CND |
-| 5         | DEF, ESQ, BLQ, CAR, CRM                        |
+| **Bloco** | **Conteúdo**                                        |
+| --------- | --------------------------------------------------- |
+| 4         | NOM, ORI, CLA, NEX, PV, PVM, SAN, SNM, PE, PEM, CND |
+| 5         | DEF, ESQ, BLQ, CAR, CRM                             |
 | 6         | FOR, AGI, INT, VIG, PRE                        |
 | 8–14      | Perícias (4 por bloco)                         |
 | 15–16     | Reservado (perícias extras)                    |
@@ -153,6 +155,7 @@ A estrutura é dividida em **3 fases de implementação**, permitindo entregas i
 | NOM              | `NOM:` (4) + 20 + `;` = 25                      | **25**    |
 | ORI              | `ORI:` (4) + 2 + `;` = 7                        | **7**     |
 | CLA              | `CLA:` (4) + 2 + `;` = 7                        | **7**     |
+| NEX              | `NEX:` (4) + 2 + `;` = 7                        | **7**     |
 | PV               | `PV:` (3) + 3 + `;` = 7                         | **7**     |
 | PVM              | `PVM:` (4) + 3 + `;` = 8                        | **8**     |
 | SAN              | `SAN:` (4) + 3 + `;` = 8                        | **8**     |
@@ -165,14 +168,14 @@ A estrutura é dividida em **3 fases de implementação**, permitindo entregas i
 | BLQ              | `BLQ:` (4) + 2 + `;` = 7                        | **7**     |
 | CAR              | `CAR:` (4) + 2 + `;` = 7                        | **7**     |
 | CRM              | `CRM:` (4) + 2 + `;` = 7                        | **7**     |
-| **Fase 1 Total** |                                                 | **143**   |
+| **Fase 1 Total** |                                                 | **150**   |
 
-| Atributos (5) | 5 × (4 + 1 + 1) = 30 | **30** | | Perícias (28) | 28 × (4 + 2 + 1) = 196 | **196** | | **Fase 2 Total** | | **226** |
+| Atributos (5) | 5 × (4 + 1 + 1) = 30 | **30** | | Perícias (28) | 28 × (4 + 1 + 1) = 168 | **168** | | **Fase 2 Total** | | **198** |
 
 | RIT | `RIT:` (4) + `[123,...,999]` (126) + `;` = 131 | **131** | | POD | `POD:` (4) + `[123,...,999]` (38) + `;` = 43 | **43** | | ITM | `ITM:` (4) + `[123,...,999]` (126) + `;` = 131 | **131** | | **Fase 3 Total** | | **305** |
 
-> **Total Geral:** 143 + 226 + 305 = **674 bytes**
+> **Total Geral:** 150 + 198 + 305 = **653 bytes**
 
-> **Blocos necessários:** 42 de 48
+> **Blocos necessários:** 41 de 48
 
-> **Sobra:** 94 bytes (6 blocos)
+> **Sobra:** 115 bytes (7 blocos)
