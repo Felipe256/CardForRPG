@@ -30,7 +30,7 @@ print(station.ifconfig())
 
 Bnome = ""
 Borigem = 0
-Bclasse = 0
+Bclasse = 1
 BpvAtual = 0
 BpvMax = 0
 BsanAtual = 0
@@ -43,6 +43,16 @@ Besquiva = 0
 Bbloqueio = 0
 Bcarga = 0
 BcargaMax = 0
+
+Bnex = 1
+Bforca = 0
+Bagilidade = 0
+Bintelecto = 0
+Bvigor = 0
+Bpresenca = 0
+
+Bfortitude = 0
+Breflexo = 0
 
 def readCard(readingNum = 4):
     import time
